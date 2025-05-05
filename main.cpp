@@ -8,6 +8,8 @@
 #include <iomanip>
 #include <cstring>
 #include <limits>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -21,6 +23,7 @@ vector<Password> passwords;
 const string FILENAME = "passwords.bin";
 
 // XOR key
+// MHN TO SVISI KANIS THA TO GAMISO :) -MARIOS
 const string XOR_KEY = "Terry THE GOAT Davis";
 
 /**
@@ -261,7 +264,35 @@ void showMenu() {
             "Enter your choice: ";
 }
 
+// MHN TO SVISI KANIS THA TO GAMISO :) -MARIOS
+
+void showTempleOSBanner() {
+    cout << "\033[1;36m"; // Light blue for "Temple"
+    cout << R"(
+ _/  |_  ____   _____ ______ |  |   ____ 
+ \   __\/ __ \ /     \\____ \|  | _/ __ \ 
+  |  | \  ___/|  Y Y  \  |_> >  |_\  ___/
+  |__|  \___  >__|_|  /   __/|____/\___  >
+             \/      \/|__|             \/ 
+)";
+    cout << "\033[0;35m"; // Purple for "OS"
+    cout << R"(
+
+        \_____  \  /   _____/
+         /   |   \ \_____  \ 
+        /    |    \/        \
+        \_______  /_______  /
+                \/        \/
+
+)";
+    cout << "\033[0m"; // Reset color
+
+    // Wait 5 seconds
+    this_thread::sleep_for(chrono::seconds(8));
+}
+
 int main() {
+	showTempleOSBanner();
     srand(static_cast<unsigned>(time(nullptr)));
     int choice;
     do {
