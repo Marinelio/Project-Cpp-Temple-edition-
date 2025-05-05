@@ -41,7 +41,7 @@ int getChoice(int min, int max) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 }
-
+// Nai
 /**
  * XOR‐encrypts (and decrypts) a string, returning a hex-encoded result.
  */
