@@ -1,3 +1,6 @@
+// AMA SVISTOYN TA SXOLEIA MAS H KATI POU NA EXEI SXESH ME TO TEMPLEOS H TERRY THA GINEI KATI POLU KAKO
+
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -24,6 +27,7 @@ const string FILENAME = "passwords.bin";
 
 // XOR key
 // MHN TO SVISI KANIS THA TO GAMISO :) -MARIOS
+// Apo edw perasan kila iq
 const string XOR_KEY = "Terry THE GOAT Davis";
 
 /**
@@ -41,7 +45,7 @@ int getChoice(int min, int max) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 }
-// Nai
+
 /**
  * XOR‐encrypts (and decrypts) a string, returning a hex-encoded result.
  */
@@ -106,10 +110,10 @@ void viewPasswords() {
     clearScreen();
     cout << passwords.size() << " Total passwords:\n";
     cout << "------------------------------------\n";
-    for (size_t i = 0; i < passwords.size(); ++i) {
+    for (size_t i = 0; i < passwords.size(); ++i) {         //karipidi view
         string encryptedHex(passwords[i].password);
         string plain = decryptPassword(encryptedHex);
-        cout << (i + 1) << ". "
+        cout << (i + 1) << ". " 
              << setw(15) << left << passwords[i].passwordType
              << ": " << plain << "\n";
     }
@@ -265,6 +269,8 @@ void showMenu() {
 }
 
 // MHN TO SVISI KANIS THA TO GAMISO :) -MARIOS
+// kanei optimize ton kodika kai trexei kalutera 
+
 void showTempleOSBanner() {
     cout << "\033[1;36m"; // Light blue for "Temple"
     cout << R"(
@@ -282,13 +288,11 @@ $$$$$$/   /$$$$$$  |$$$$$$ $$$$  |/$$$$$$  |$$ |/$$$$$$  |$$ |  $$ |$$      \
                                   $$/       
 )";
 
-    cout << "\033[0m"; 
+    cout << "\033[0m"; // Reset color
 
-    
+    // Wait 8 seconds
     this_thread::sleep_for(chrono::seconds(8));
-
 }
-
 int main() {
 	showTempleOSBanner();
     srand(static_cast<unsigned>(time(nullptr)));
@@ -299,7 +303,7 @@ int main() {
         switch (choice) {
             case 1: viewPasswords();    break;
             case 2: addPassword();     break;
-            case 3: addPassword();     break;  
+            case 3: addPassword();     break;  // Generate is inside addPassword
             case 4: editPassword();    break;
             case 5: deletePassword();  break;
             case 6: clearScreen(); cout << "Goodbye!\n"; break;
@@ -310,5 +314,6 @@ int main() {
         }
     } while (choice != 6);
     return 0;
-	 
 }
+//Pomakos was here (MegasPaisios)
+//BigKaris was here also
