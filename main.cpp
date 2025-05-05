@@ -265,8 +265,6 @@ void showMenu() {
 }
 
 // MHN TO SVISI KANIS THA TO GAMISO :) -MARIOS
-
-
 void showTempleOSBanner() {
     cout << "\033[1;36m"; // Light blue for "Temple"
     cout << R"(
@@ -284,11 +282,13 @@ $$$$$$/   /$$$$$$  |$$$$$$ $$$$  |/$$$$$$  |$$ |/$$$$$$  |$$ |  $$ |$$      \
                                   $$/       
 )";
 
-    cout << "\033[0m"; // Reset color
+    cout << "\033[0m"; 
 
-    // Wait 8 seconds
+    
     this_thread::sleep_for(chrono::seconds(8));
+
 }
+
 int main() {
 	showTempleOSBanner();
     srand(static_cast<unsigned>(time(nullptr)));
@@ -299,7 +299,7 @@ int main() {
         switch (choice) {
             case 1: viewPasswords();    break;
             case 2: addPassword();     break;
-            case 3: addPassword();     break;  // Generate is inside addPassword
+            case 3: addPassword();     break;  
             case 4: editPassword();    break;
             case 5: deletePassword();  break;
             case 6: clearScreen(); cout << "Goodbye!\n"; break;
@@ -310,4 +310,5 @@ int main() {
         }
     } while (choice != 6);
     return 0;
+	 
 }
